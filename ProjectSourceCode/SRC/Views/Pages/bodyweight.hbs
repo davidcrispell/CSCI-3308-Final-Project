@@ -1,0 +1,60 @@
+{{!-- Calisthenics page --}}
+<h2>Calisthenics Workouts</h2>
+<p>Track bodyweight exercises here.</p>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Workout Name</th>
+        <th>Duration</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each workoutlogs}}
+      <tr>
+        <td>{{date}}</td>
+        <td>{{name}}</td>
+        <td>{{workoutduration}} minutes</td>
+        <td>
+          <button class="btn btn-secondary btn-sm">Edit</button>
+          <button class="btn btn-danger btn-sm">Delete</button>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#log_modal">Log Workout</button>
+
+<div class="modal fade" id="log_modal" tabindex="-1" aria-labelledby="log_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="log_label">Log Calisthenics Workout</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="calisthenics_form">
+          <div class="mb-3">
+            <label class="form-label" for="workout_name">Workout Name</label>
+            <input type="text" class="form-control" id="workout_name" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="workout_date">Date</label>
+            <input type="date" class="form-control" id="workout_date" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="workout_duration">Duration (minutes)</label>
+            <input type="number" class="form-control" id="workout_duration" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
